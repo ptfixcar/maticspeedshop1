@@ -164,15 +164,12 @@ section h2 {
   transform: translateY(-2px);
 }
 
-
-
-/* Mobile Menu Toggle */
 /* Mobile Toggle Button */
 .mobile-toggle {
   display: none;
   font-size: 1.8rem;
   cursor: pointer;
-  color: #004080;
+  color: var(--text-light);
 }
 
 /* Dropdown default hidden */
@@ -218,9 +215,9 @@ section h2 {
 }
 
 .hero {
-  background: url("landingpage.jpg") no-repeat center top;
-  background-size: cover;       /* isi penuh layar */
-  background-attachment: scroll;
+  background: url("landingpage.jpg") no-repeat center center;
+  background-size: cover;       /* selalu isi penuh layar */
+  background-attachment: scroll; /* lebih aman daripada fixed di mobile */
   color: #000;
   text-align: center;
   display: flex;
@@ -228,18 +225,37 @@ section h2 {
   justify-content: center;
   position: relative;
   overflow: hidden;
-
-  min-height: 100vh;            /* pastikan setinggi layar */
+  min-height: 5000dvh;   /* unit modern: dynamic viewport */
+  min-height: -webkit-fill-available; /* fallback Safari lama */
   width: 100%;
-  padding: 120px 20px;          /* tambah ruang biar teks gak kepotong */
+  padding: 240px 150px;  /* ruang aman untuk teks */
 }
-
+/* Hero versi mobile */
 @media (max-width: 768px) {
   .hero {
+    padding: 15px 15px;            /* lebih compact */
     background-position: center center; /* fokus ke tengah gambar */
-    padding: 80px 15px;
+    background-image: url("Frame\ 1.png");
+    min-height: 100vh;              /* biar lebih ringkas di mobile */
+  }
+  
+  .hero h2 {
+    font-size: 1.8rem;             /* teks lebih kecil */
+    margin-bottom: 15px;
+  }
+
+  .hero p {
+    font-size: 1rem;               /* teks lebih kecil */
+    max-width: 90%;                /* biar muat di layar kecil */
+    margin-bottom: 20px;
+  }
+
+  .hero .btn-primary {
+    padding: 12px 25px;            /* tombol lebih kecil */
+    font-size: 1rem;
   }
 }
+
 
 .hero::before {
   content: '';
@@ -351,6 +367,49 @@ section h2 {
   justify-content: center;
   min-height: 70vh;
   position: relative;
+}
+
+/* =======================
+   Hero Section Mobile
+======================= */
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh;
+    padding: 0 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: 60vh;
+    padding: 0 0.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .btn-primary {
+    font-size: 0.9rem;
+    padding: 0.5rem 1.2rem;
+  }
 }
 
 /* Hero Service Page */
@@ -1235,12 +1294,22 @@ section h2 {
     grid-template-columns: 1fr;
   }
 
-  .nav-links {
-    display: none;
+   .nav-links {
+    display:none;
+    flex-direction:column;
+    position:absolute;
+    top:60px;
+    right:0;
+    background:var(--dark-bg);
+    width:200px;
+    padding:10px;
+  }
+  .nav-links.mobile-active {
+    display:flex;
   }
 
   .mobile-toggle {
-    display: flex;
+    display: blo;
   }
 }
 
