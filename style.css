@@ -225,17 +225,17 @@ section h2 {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  min-height: 5000dvh;   /* unit modern: dynamic viewport */
-  min-height: -webkit-fill-available; /* fallback Safari lama */
+
+  min-height: 250vdh;             /* ✅ sesuaikan dengan tinggi layar browser */
   width: 100%;
-  padding: 240px 150px;  /* ruang aman untuk teks */
+  padding: 245px 150px;          /* ruang aman untuk teks di desktop */
 }
 /* Hero versi mobile */
 @media (max-width: 768px) {
   .hero {
     padding: 15px 15px;            /* lebih compact */
     background-position: center center; /* fokus ke tengah gambar */
-    background-image: url("Frame\ 1.png");
+    background-image: url("Frame\ 1\ \(1\).png");
     min-height: 100vh;              /* biar lebih ringkas di mobile */
   }
   
