@@ -225,10 +225,10 @@ section h2 {
   justify-content: center;
   position: relative;
   overflow: hidden;
-
-  min-height: 250vdh;             /* ✅ sesuaikan dengan tinggi layar browser */
+  min-height: 5000dvh;   /* unit modern: dynamic viewport */
+  min-height: -webkit-fill-available; /* fallback Safari lama */
   width: 100%;
-  padding: 245px 150px;          /* ruang aman untuk teks di desktop */
+  padding: 240px 150px;  /* ruang aman untuk teks */
 }
 /* Hero versi mobile */
 @media (max-width: 768px) {
