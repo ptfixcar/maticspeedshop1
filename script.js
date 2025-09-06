@@ -14,6 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+const mobileToggle = document.querySelector(".mobile-toggle");
+const navLinks = document.querySelector(".nav-links");
+mobileToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("mobile-active");
+});
+
+
 // =============================
 // Sticky Navbar + Shadow
 // =============================
@@ -25,19 +32,6 @@ window.addEventListener("scroll", () => {
     navbar.classList.remove("sticky");
   }
 });
-
-// Toggle Mobile Navbar
-document.addEventListener("DOMContentLoaded", () => {
-  const mobileToggle = document.getElementById("mobileToggle");
-  const navLinks = document.getElementById("navLinks");
-
-  mobileToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-    mobileToggle.textContent = navLinks.classList.contains("active") ? "✖" : "☰";
-  });
-});
-
-
 
 // =============================
 // Smooth scroll untuk tombol hero
@@ -251,5 +245,7 @@ function initNavigation() {
         });
     }
 }
+
+
 
 
