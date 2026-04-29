@@ -1,6 +1,34 @@
-/* =========================================================
-   1. VARIABLES & BASE STYLE
-========================================================= */
+/* ==========================================================================
+   STYLE.CSS — Cleaned & Restructured
+   ==========================================================================
+
+   TABLE OF CONTENTS
+   ─────────────────────────────────────────────────────────────────────────
+   01. Variables & Reset
+   02. Base & Layout
+   03. Animations (keyframes global)
+   04. Preloader
+   05. Navbar
+   06. Scroll-to-Top Button
+   07. Hero Section
+   08. Benefit Section
+   09. Services Section
+   10. Contact Section
+   11. Map Section
+   12. CTA Section
+   13. About Section
+   14. Testimonial Section
+   15. Vision & Mission Section
+   16. Footer
+   17. Utilities (Fade-in, Buttons)
+   18. Responsive Overrides
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01. VARIABLES & RESET
+   ========================================================================== */
+
 :root {
   --primary: #e41c06;
   --primary-dark: #9a1001;
@@ -12,14 +40,20 @@
   --transition: 0.3s ease;
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+
+/* ==========================================================================
+   02. BASE & LAYOUT
+   ========================================================================== */
+
 body {
-  margin: 0;
   font-family: 'Poppins', sans-serif;
   color: var(--text-dark);
   background: var(--light-bg);
@@ -46,13 +80,133 @@ section h2 {
   position: relative;
 }
 
-/* Preloader */
+
+/* ==========================================================================
+   03. ANIMATIONS (global keyframes)
+   ========================================================================== */
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes heroSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDelay {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes lineExpand {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 80px;
+  }
+}
+
+@keyframes geometricFloat {
+  0% {
+    transform: translateX(-100px) rotate(0deg);
+  }
+
+  100% {
+    transform: translateX(100vw) rotate(360deg);
+  }
+}
+
+@keyframes pulseBackground {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes dropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ==========================================================================
+   04. PRELOADER
+   ========================================================================== */
+
 .preloader {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: linear-gradient(135deg, var(--primary), var(--dark-bg));
   display: flex;
   justify-content: center;
@@ -64,43 +218,42 @@ section h2 {
 .spinner {
   width: 50px;
   height: 50px;
-  border: 4px solid rgba(255,255,255,0.3);
-  border-top: 4px solid white;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
 
-/* =========================================================
-   2. Navbar with Enhanced Animation
-========================================================= */
+/* ==========================================================================
+   05. NAVBAR
+   ========================================================================== */
+
 .navbar {
-  background: var(--primary);
-  padding: 1rem 0;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  transition: all 0.3s ease;
+  background: var(--primary);
+  padding: 1rem 0;
   backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
   background: rgba(228, 28, 6, 0.95);
   padding: 0.7rem 0;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Nav container */
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* Logo */
 .nav-logo {
   font-weight: 700;
   font-size: 1.2rem;
@@ -115,7 +268,7 @@ section h2 {
 }
 
 .logo-img {
-  height: 50px;
+  height: 70px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -126,6 +279,7 @@ section h2 {
   transform: rotate(5deg);
 }
 
+/* Nav links */
 .nav-links {
   display: flex;
   gap: 2rem;
@@ -137,9 +291,9 @@ section h2 {
   font-size: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 25px;
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .nav-links a::before {
@@ -149,7 +303,7 @@ section h2 {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: left 0.5s ease;
 }
 
@@ -159,12 +313,12 @@ section h2 {
 
 .nav-links a:hover,
 .nav-links a.active {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   color: #ffd700;
   transform: translateY(-2px);
 }
 
-/* Mobile Toggle Button */
+/* Mobile toggle */
 .mobile-toggle {
   display: none;
   font-size: 1.8rem;
@@ -172,23 +326,22 @@ section h2 {
   color: var(--text-light);
 }
 
-/* Dropdown default hidden */
-.nav-links {
-  display: flex;
-  gap: 20px;
-}
-
+/* --- Responsive: Navbar --- */
 @media (max-width: 768px) {
+  .mobile-toggle {
+    display: block;
+  }
+
   .nav-links {
     display: none;
     flex-direction: column;
-    background: #fff;
     position: absolute;
     top: 70px;
     right: 20px;
     width: 200px;
+    background: #fff;
     border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     padding: 15px;
     z-index: 999;
   }
@@ -197,168 +350,248 @@ section h2 {
     display: flex;
     animation: dropdown 0.3s ease forwards;
   }
+}
+
+@media (max-width: 992px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: var(--dark-bg);
+    width: 200px;
+    padding: 10px;
+  }
+
+  .nav-links.mobile-active {
+    display: flex;
+  }
 
   .mobile-toggle {
     display: block;
   }
+}
 
-  @keyframes dropdown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+/* ==========================================================================
+   06. SCROLL-TO-TOP BUTTON
+   ========================================================================== */
+
+#scrollTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 26px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #004080, #0066cc);
+  color: #fff;
+  box-shadow: 0 0 15px #004080, 0 0 30px #0066cc;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+#scrollTopBtn.show {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+  animation: popUp 0.4s ease;
+}
+
+#scrollTopBtn:hover {
+  background: #004080;
+  transform: scale(1.17) translateY(-5px);
+  box-shadow: 0 0 20px #00b7ff, 0 0 40px #00b7ffaa, 0 0 60px #00c8ffcc;
+}
+
+@media (max-width: 480px) {
+  #scrollTopBtn {
+    width: 48px;
+    height: 48px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 22px;
   }
 }
+
+
+/* ==========================================================================
+   07. HERO SECTION
+   ========================================================================== */
 
 .hero {
-  background: url("landingpage.jpg") no-repeat center center;
-  background-size: cover;       /* selalu isi penuh layar */
-  background-attachment: scroll; /* lebih aman daripada fixed di mobile */
-  color: #000;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
+  height: 100dvh;
+  min-height: 100dvh;
   overflow: hidden;
-  min-height: 5000dvh;   /* unit modern: dynamic viewport */
-  min-height: -webkit-fill-available; /* fallback Safari lama */
-  width: 100%;
-  padding: 240px 150px;  /* ruang aman untuk teks */
-}
-/* Hero versi mobile */
-@media (max-width: 768px) {
-  .hero {
-    padding: 15px 15px;            /* lebih compact */
-    background-position: center center; /* fokus ke tengah gambar */
-    background-image: url("Frame\ 1\ \(1\).png");
-    min-height: 100vh;              /* biar lebih ringkas di mobile */
-  }
-  
-  .hero h2 {
-    font-size: 1.8rem;             /* teks lebih kecil */
-    margin-bottom: 15px;
-  }
-
-  .hero p {
-    font-size: 1rem;               /* teks lebih kecil */
-    max-width: 90%;                /* biar muat di layar kecil */
-    margin-bottom: 20px;
-  }
-
-  .hero .btn-primary {
-    padding: 12px 25px;            /* tombol lebih kecil */
-    font-size: 1rem;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  text-align: center;
+  background-color: #000;
 }
 
-
-.hero::before {
-  content: '';
+/* Video */
+.hero-video {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.3"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/></circle><circle cx="80" cy="40" r="1.5" fill="white" opacity="0.5"><animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/></circle><circle cx="40" cy="80" r="1" fill="white" opacity="0.4"><animate attributeName="opacity" values="0.4;1;0.4" dur="2.5s" repeatCount="indefinite"/></circle></svg>');
-  animation: float 20s infinite linear;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
   z-index: 1;
 }
 
-@keyframes float {
-  0% { transform: translateY(100vh) rotate(0deg); }
-  100% { transform: translateY(-100vh) rotate(360deg); }
+.video-landscape {
+  display: block;
 }
 
+.video-portrait {
+  display: none;
+}
+
+/* FRAME VIDEO BARU */
+.video-landscape {
+  width: 100%;
+  max-width: 850px;
+
+  /* Tinggi lebih tipis: 16:9 → 21:9 cinematic */
+  aspect-ratio: 21 / 9;
+
+  border-radius: 12px;
+  background: #0d1b2a;
+
+  overflow: hidden;
+  display: block;
+
+  /* Soft shadow biru */
+  box-shadow: 0 6px 25px rgba(0, 123, 255, 0.25);
+
+  transition: transform 0.28s ease, box-shadow 0.3s ease;
+}
+
+/* Hover efek premium */
+.video-landscape:hover {
+  transform: scale(1.015);
+  box-shadow: 0 10px 35px rgba(0, 140, 255, 0.35);
+}
+
+/* Mobile — tetap proporsional */
+@media (max-width: 768px) {
+  .video-landscape {
+    max-width: 100%;
+    border-radius: 10px;
+
+    /* 18:9 lebih cocok untuk HP */
+    aspect-ratio: 18 / 9;
+  }
+}
+
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 auto 10px;
+  gap: 20px;
+  flex-wrap: wrap;
+  /* biar bisa turun kalau layar sempit */
+}
+
+.video-wrapper blockquote.instagram-media {
+  width: 45% !important;
+  /* Desktop: 2 sejajar */
+  min-width: unset !important;
+  max-width: unset !important;
+  margin: 0 auto !important;
+}
+
+/* Mobile: biar gak kepotong */
+@media (max-width: 768px) {
+  .video-wrapper {
+    flex-direction: column;
+    /* otomatis stack */
+    align-items: center;
+  }
+
+  .video-wrapper blockquote.instagram-media {
+    width: 100% !important;
+    /* full lebar di mobile */
+  }
+}
+
+/* Overlay */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 2;
+}
+
+/* Content */
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 10;
+  padding: 0 20px;
   animation: heroSlideUp 1s ease-out;
 }
 
-@keyframes heroSlideUp {
-  from { opacity: 0; transform: translateY(50px); }
-  to   { opacity: 1; transform: translateY(0); }
+.hero-title {
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-.hero h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-  animation: textGlow 2s ease-in-out infinite alternate;
-}
-
-@keyframes textGlow {
-  from { text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.3); }
-  to   { text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 30px rgba(255,255,255,0.5); }
-}
-
-.hero p {
+.hero-subtitle {
+  color: #eaeaea;
   font-size: 1.2rem;
-  max-width: 700px;
-  margin: 0 auto 30px;
+  margin-bottom: 25px;
   line-height: 1.6;
-  animation: fadeInDelay 1s ease-out 0.3s both;
-}
-
-@keyframes fadeInDelay {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
 }
 
 .hero .btn-primary {
   display: inline-block;
-  margin-top: 3rem;
   padding: 15px 35px;
   background: var(--primary);
   color: #fff;
-  font-size: 1.1rem;
-  font-weight: 600;
   border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 600;
   text-decoration: none;
+  margin-top: 20px;
+  box-shadow: 0 8px 25px rgba(228, 28, 6, 0.4);
+  animation: fadeInDelay 1s ease-out 0.3s both;
   transition: all 0.3s ease;
-  position: relative;
-  z-index: 2;
-  overflow: hidden;
-  animation: buttonBounce 1s ease-out 0.6s both;
-  box-shadow: 0 8px 25px rgba(228, 28, 6, 0.3);
 }
 
 .hero .btn-primary:hover {
-  background: var(--primary-dark);
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 12px 35px rgba(228, 28, 6, 0.4);
+  background: var(--dark-bg);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(228, 28, 6, 0.5);
 }
 
-@keyframes buttonBounce {
-  0% { opacity: 0; transform: translateY(20px); }
-  60% { transform: translateY(-5px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-.hero .btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-  transition: left 0.5s ease;
-}
-
-.hero .btn-primary:hover::before {
-  left: 100%;
-}
-
-/* Hero Service Page */
-.hero-service {
-  background: linear-gradient(rgba(0,64,128,0.8), rgba(228,28,6,0.8)),
-              url("transssss.jpg") center/cover no-repeat;
+/* Hero — alternate page variants */
+.hero-service,
+.hero-contact {
   color: #fff;
   text-align: center;
   padding: 120px 20px 60px;
@@ -369,26 +602,78 @@ section h2 {
   position: relative;
 }
 
-/* =======================
-   Hero Section Mobile
-======================= */
+.hero-service {
+  background: linear-gradient(rgba(0, 64, 128, 0.8), rgba(228, 28, 6, 0.8)),
+    url("transssss.jpg") center / cover no-repeat;
+}
+
+.hero-contact {
+  background: linear-gradient(rgba(0, 64, 128, 0.8), rgba(228, 28, 6, 0.8)),
+    url("caer1.jpg") center / cover no-repeat;
+  min-height: 100vh;
+}
+
+/* --- Responsive: Hero video --- */
+@media (min-width: 769px) {
+  .video-landscape {
+    min-width: 101%;
+    min-height: 101%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1366px) {
+  .video-landscape {
+    min-width: 102%;
+    min-height: 102%;
+  }
+}
+
+@media (min-width: 1367px) {
+  .video-landscape {
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 @media (max-width: 768px) {
+  .video-landscape {
+    display: none;
+  }
+
+  .video-portrait {
+    display: block;
+  }
+
   .hero {
-    height: 70vh;
-    padding: 0 1rem;
+    height: 100vh;
+    min-height: 100vh;
   }
 
-  .hero-content h1 {
-    font-size: 2rem;
+  .video-portrait {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
   }
 
-  .hero-content p {
+  .hero-title {
+    font-size: 1.9rem;
+  }
+
+  .hero-subtitle {
     font-size: 1rem;
   }
 
-  .btn-primary {
+  .hero .btn-primary {
+    padding: 12px 24px;
     font-size: 1rem;
-    padding: 0.6rem 1.5rem;
   }
 }
 
@@ -412,44 +697,23 @@ section h2 {
   }
 }
 
-/* Hero Service Page */
-.hero-contact {
-  background: linear-gradient(rgba(0,64,128,0.8), rgba(228,28,6,0.8)),
-              url("caer1.jpg") center/cover no-repeat;
-  color: #fff;
-  text-align: center;
-  padding: 120px 20px 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  position: relative;
-}
 
-/* ===============================
-   BENEFIT SECTION WITH CARDS
-================================= */
+/* ==========================================================================
+   08. BENEFIT SECTION
+   ========================================================================== */
+
 .benefit {
   background: linear-gradient(135deg, #f8f9fc 0%, #e8f2ff 100%);
   padding: 80px 20px;
   text-align: center;
-  position: relative;
 }
 
 .benefit::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="0,100 50,0 100,100" fill="rgba(0,64,128,0.03)"/></svg>');
   animation: geometricFloat 15s infinite linear;
-}
-
-@keyframes geometricFloat {
-  0% { transform: translateX(-100px) rotate(0deg); }
-  100% { transform: translateX(100vw) rotate(360deg); }
 }
 
 .benefit h2 {
@@ -471,48 +735,39 @@ section h2 {
   animation: lineExpand 1s ease-out;
 }
 
-@keyframes lineExpand {
-  from { width: 0; }
-  to { width: 80px; }
-}
-
+/* Grid */
 .benefit-grid {
   display: grid;
-  justify-content: center; /* biar auto-center kalau jumlah box tidak genap */
   gap: 30px;
+  justify-content: center;
   position: relative;
   z-index: 2;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-/* Tablet: pastikan minimal 2 box */
 @media (min-width: 768px) {
   .benefit-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Desktop: target 4 box sejajar */
 @media (min-width: 1200px) {
   .benefit-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-
-/* fade + scale initial state */
+/* Cards */
 .benefit-box {
   background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
   padding: 40px 25px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   font-size: 1.1rem;
   font-weight: 500;
   border: 2px solid transparent;
   position: relative;
   overflow: hidden;
-
-  /* animasi awal */
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -532,8 +787,8 @@ section h2 {
   height: 200%;
   background: linear-gradient(45deg, transparent, rgba(228, 28, 6, 0.1), transparent);
   transform: rotate(45deg);
-  transition: all 0.5s ease;
   opacity: 0;
+  transition: all 0.5s ease;
 }
 
 .benefit-box:hover::before {
@@ -541,32 +796,59 @@ section h2 {
   transform: rotate(45deg) translate(50px, 50px);
 }
 
-/* efek hover konsisten semua box */
 .benefit-box:hover {
-  border: 2px solid #e41c06;
+  border-color: #e41c06;
   background: #fff5f5;
   box-shadow: 0 15px 40px rgba(228, 28, 6, 0.2);
 }
 
-.benefit-box:nth-child(1) { animation: slideInLeft 0.8s ease-out; }
-.benefit-box:nth-child(2) { animation: slideInLeft 0.8s ease-out 0.2s both; }
-.benefit-box:nth-child(3) { animation: slideInLeft 0.8s ease-out 0.4s both; }
-.benefit-box:nth-child(4) { animation: slideInLeft 0.8s ease-out 0.6s both; }
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+/* Staggered entry animations */
+.benefit-box:nth-child(1) {
+  animation: slideInLeft 0.8s ease-out;
 }
 
-/* ===============================
-   SERVICES SECTION
-================================= */
+.benefit-box:nth-child(2) {
+  animation: slideInLeft 0.8s ease-out 0.2s both;
+}
+
+.benefit-box:nth-child(3) {
+  animation: slideInLeft 0.8s ease-out 0.4s both;
+}
+
+.benefit-box:nth-child(4) {
+  animation: slideInLeft 0.8s ease-out 0.6s both;
+}
+
+/* Expandable more text */
+.more-text {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #333;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.benefit-box.active .more-text {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.toggle-icon {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #e60000;
+  margin-top: 12px;
+  transition: transform 0.3s ease;
+}
+
+
+/* ==========================================================================
+   09. SERVICES SECTION
+   ========================================================================== */
+
 .services {
   background: linear-gradient(180deg, #e6f2ff 0%, #ffffff 100%);
   padding: 60px 20px;
@@ -582,7 +864,6 @@ section h2 {
   color: #666;
 }
 
-/* tombol biar rapih di tengah */
 .services .btn-secondary {
   display: inline-block;
   margin: 0 auto;
@@ -596,17 +877,17 @@ section h2 {
   justify-content: center;
 }
 
+/* Cards */
 .service-card {
-  position: relative;
   background: #fff;
   border-radius: 20px;
   padding: 30px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
   position: relative;
   overflow: hidden;
-  border: 2px solid transparent;
   display: block;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .service-card::after {
@@ -616,7 +897,7 @@ section h2 {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
   transition: left 0.5s ease;
 }
 
@@ -626,7 +907,7 @@ section h2 {
 
 .service-card:hover {
   transform: translateY(-10px) rotateX(5deg);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   border-color: var(--primary);
 }
 
@@ -656,30 +937,33 @@ section h2 {
   margin: 0;
 }
 
+/* Badge (icon overlay) */
 .service-card .badge {
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 42px;      /* lingkaran */
+  width: 42px;
   height: 42px;
   border-radius: 50%;
   background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   z-index: 2;
-  overflow: hidden;   /* jaga supaya ikon tidak keluar lingkaran */
+  overflow: hidden;
 }
 
 .service-card .badge img {
-  width: 75%;
-  height: 75%;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
   display: block;
-  margin-top: 20px;   /* geser ke bawah */
-  margin-left: 1px;  /* geser ke kanan */
+  margin-top: 20px;
+  margin-left: 1px;
 }
+
+/* Toggle button */
 .toggle-btn {
   background: linear-gradient(135deg, #004080, #0066cc);
   color: #fff;
@@ -693,22 +977,14 @@ section h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
   margin: 15px auto 0;
-  box-shadow: 0 4px 15px rgba(0,64,128,0.3);
+  box-shadow: 0 4px 15px rgba(0, 64, 128, 0.3);
+  transition: all 0.3s ease;
 }
 
 .toggle-btn:hover {
   background: linear-gradient(135deg, #0066cc, #004080);
   transform: scale(1.1) rotate(90deg);
-}
-
-.more-text {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-top: 0;
 }
 
 .service-card.active .more-text {
@@ -722,153 +998,39 @@ section h2 {
   transform: rotate(45deg);
 }
 
-
-
-/* ===============================
-   REVIEWS SECTION
-================================= */
-.google-reviews-custom {
-  padding: 80px 1rem;
-  background: linear-gradient(135deg, #004080 0%, #0066cc 100%);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.google-reviews-custom::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-  animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.google-reviews-custom h2 {
-  color: white;
-  font-size: 2.2rem;
-  margin-bottom: 50px;
-  position: relative;
-  z-index: 2;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-.reviews-wrapper {
-  position: relative;
+/* Video wrapper (Instagram embed) */
+.video-wrapper {
   display: flex;
-  align-items: center;
-  z-index: 2;
-  overflow: visible; /* pastikan tombol bisa terlihat */
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 0 auto 10px;
 }
 
-.review-scroll {
-  display: flex;
-  gap: 30px;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  padding: 20px 0;
+.video-wrapper blockquote.instagram-media {
+  width: 45% !important;
+  min-width: unset !important;
+  max-width: unset !important;
+  margin: 0 auto !important;
 }
 
-.review-card {
-  min-width: 320px;
-  max-width: 350px;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-  flex: 0 0 auto;
-  text-align: left;
-  transition: all 0.4s ease;
-  border: 1px solid rgba(255,255,255,0.2);
+@media (max-width: 768px) {
+  .video-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .video-wrapper blockquote.instagram-media {
+    width: 100% !important;
+  }
 }
 
-.review-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-}
 
-.review-author {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
+/* ==========================================================================
+   10. CONTACT SECTION
+   ========================================================================== */
 
-.review-author img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 15px;
-  border: 3px solid var(--primary);
-  transition: transform 0.3s ease;
-}
-
-.review-card:hover .review-author img {
-  transform: scale(1.1);
-}
-
-.review-author .name {
-  font-weight: bold;
-  color: #222;
-  display: block;
-  font-size: 1.1rem;
-}
-
-.review-author .stars {
-  color: #f4b400;
-  font-size: 1rem;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-
-.review-btn {
-  background: linear-gradient(135deg, #004080, #0066cc);
-  color: #fff;
-  border: none;
-  width: 45px;      /* Lebar tombol */
-  height: 45px;     /* Tinggi tombol */
-  border-radius: 50%;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: all 0.3s ease;
-  font-size: 18px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-  z-index: 10; /* pastikan tombol di atas */
-  opacity: 0; /* disembunyikan default */
-  pointer-events: none; /* tidak bisa diklik saat tersembunyi */
-}
-
-.review-btn.left {
-  left: 10px;
-}
-
-.review-btn.right {
-  right: 10px;
-}
-
-/* Munculkan tombol saat hover section review */
-.google-reviews-custom:hover .review-btn {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Efek hover tombol */
-.review-btn:hover {
-  background: linear-gradient(135deg, #0066cc, #004080);
-  transform: translateY(-50%) scale(1.1);
-}
-
-/* ===============================
-   CONTACT SECTION
-================================= */
 .contact-short {
   background: linear-gradient(135deg, #f8f9fc 0%, #e8f2ff 100%);
   padding: 80px 20px;
@@ -898,8 +1060,8 @@ section h2 {
   color: #fff;
   text-decoration: none;
   font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 .contact-item .icon {
@@ -912,6 +1074,7 @@ section h2 {
   transform: scale(1.05);
 }
 
+/* WhatsApp form */
 #waForm {
   display: flex;
   flex-direction: column;
@@ -927,8 +1090,8 @@ section h2 {
   border-radius: 15px;
   font-size: 1rem;
   width: 100%;
+  background: rgba(255, 255, 255, 0.9);
   transition: all 0.3s ease;
-  background: rgba(255,255,255,0.9);
 }
 
 #waForm input:focus,
@@ -948,8 +1111,8 @@ section h2 {
   cursor: pointer;
   font-size: 1.1rem;
   font-weight: 600;
-  transition: all 0.3s ease;
   box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+  transition: all 0.3s ease;
 }
 
 #waForm button:hover {
@@ -958,9 +1121,10 @@ section h2 {
   box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
 }
 
-/* ===============================
-   MAP SECTION
-================================= */
+
+/* ==========================================================================
+   11. MAP SECTION
+   ========================================================================== */
 #map-section {
   padding: 80px 20px;
   text-align: center;
@@ -976,7 +1140,7 @@ section h2 {
   width: 100%;
   height: 400px;
   border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
   margin-bottom: 20px;
   transition: transform 0.3s ease;
 }
@@ -985,27 +1149,11 @@ section h2 {
   transform: scale(1.02);
 }
 
-.btn-secondary {
-  display: inline-block;
-  background: linear-gradient(135deg, #004080, #0066cc);
-  color: #fff;
-  padding: 12px 30px;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  box-shadow: 0 8px 25px rgba(0,64,128,0.3);
-}
 
-.btn-secondary:hover {
-  background: linear-gradient(135deg, #0066cc, #004080);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(0,64,128,0.4);
-}
+/* ==========================================================================
+   12. CTA SECTION
+   ========================================================================== */
 
-/* ===============================
-   CTA SECTION
-================================= */
 .cta-section {
   background: linear-gradient(135deg, #004080 0%, #0066cc 50%, #e41c06 100%);
   color: #fff;
@@ -1022,13 +1170,8 @@ section h2 {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
   animation: pulseBackground 4s ease-in-out infinite;
-}
-
-@keyframes pulseBackground {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.1); opacity: 0.8; }
 }
 
 .cta-section h2 {
@@ -1037,7 +1180,7 @@ section h2 {
   font-weight: 700;
   position: relative;
   z-index: 2;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .cta-section p {
@@ -1059,11 +1202,11 @@ section h2 {
   font-weight: 600;
   text-decoration: none;
   border-radius: 50px;
-  transition: all 0.3s ease;
   display: inline-block;
   position: relative;
   z-index: 2;
   box-shadow: 0 10px 30px rgba(230, 57, 70, 0.4);
+  transition: all 0.3s ease;
 }
 
 .cta-section .btn-primary:hover {
@@ -1072,87 +1215,858 @@ section h2 {
   box-shadow: 0 15px 40px rgba(230, 57, 70, 0.5);
 }
 
-/* ===============================
-   ABOUT SECTION
-================================= */
+
+/* ==========================================================================
+   13. ABOUT SECTION
+   ========================================================================== */
+
 .about-section {
-  padding: 100px 20px;
-  background: linear-gradient(135deg, #f8f9fc 0%, #ffffff 100%);
+  padding: 80px 0;
+  background: #f8fafc;
 }
 
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 50px;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
+/* Image */
 .about-image {
   position: relative;
+  max-width: 480px;
+  margin: auto;
+
+  /* Animasi: slide dari kiri */
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.9s cubic-bezier(.22, 1, .36, 1),
+    transform 0.9s cubic-bezier(.22, 1, .36, 1);
+}
+
+.about-image.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Pulse ring di sekitar foto */
+.about-image::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 28px;
+  border: 2px solid rgba(37, 99, 235, 0.25);
+  animation: pulseRing 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes pulseRing {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: scale(1.02);
+    opacity: 1;
+  }
 }
 
 .about-image img {
-  width: 80%;
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
   border-radius: 20px;
-  border: 5px solid #fff;   /* warna putih */
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  transition: transform 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  /* Zoom halus saat visible */
+  transition: transform 0.6s ease 0.4s, box-shadow 0.3s ease;
 }
 
-.about-image:hover img {
-  transform: scale(1.05) rotate(2deg);
+.about-image.visible img {
+  transform: scale(1.01);
 }
 
+.about-image img:hover {
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+}
+
+/* ------------------------------------------
+   BADGES
+------------------------------------------ */
+.experience-badge,
+.customer-badge {
+  position: absolute;
+  background: #2563eb;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 14px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+  /* Awal tersembunyi */
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+.experience-badge {
+  top: 20px;
+  left: 20px;
+  transform: translateY(-12px);
+  transition-delay: 0.7s;
+}
+
+.customer-badge {
+  bottom: 20px;
+  right: 20px;
+  transform: translateY(12px);
+  transition-delay: 0.9s;
+}
+
+.about-image.visible .experience-badge,
+.about-image.visible .customer-badge {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.experience-badge:hover,
+.customer-badge:hover {
+  transform: scale(1.08) !important;
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.45);
+}
+
+/* ------------------------------------------
+   TEXT SIDE
+------------------------------------------ */
+.about-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px 0;
+
+  /* Animasi: slide dari kanan */
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.9s cubic-bezier(.22, 1, .36, 1) 0.15s,
+    transform 0.9s cubic-bezier(.22, 1, .36, 1) 0.15s;
+}
+
+.about-text.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ------------------------------------------
+   LABEL
+------------------------------------------ */
+.about-label {
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Garis bawah tumbuh */
+.about-label::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #2563eb;
+  transition: width 1s ease 0.8s;
+}
+
+.about-text.visible .about-label::after {
+  width: 100%;
+}
+
+/* ------------------------------------------
+   HEADING & PARAGRAF
+------------------------------------------ */
 .about-text h2 {
-  color: #004080;
-  font-size: 2.2rem;
-  margin-bottom: 25px;
-  text-align: left;
+  font-size: 36px;
+  margin: 10px 0;
+  line-height: 1.3;
+}
+
+.about-text h2 span {
+  color: #2563eb;
+}
+
+.subtitle {
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #555;
 }
 
 .about-text p {
   color: #666;
-  line-height: 1.8;
-  margin-bottom: 25px;
-  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
-.feature-list {
-  list-style: none;
-  padding: 0;
+/* ------------------------------------------
+   FEATURE GRID
+------------------------------------------ */
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
 }
 
-.feature-list li {
-  padding: 15px 0;
-  border-bottom: 1px solid #e0e0e0;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
+.feature-card {
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border: 1.5px solid transparent;
+
+  /* Awal tersembunyi */
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity 0.5s ease,
+    transform 0.5s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.feature-list li:hover {
-  padding-left: 15px;
-  color: var(--primary);
+/* Staggered delay tiap card */
+.feature-card:nth-child(1) {
+  transition-delay: 0.30s;
 }
 
-.feature-list li:last-child {
-  border-bottom: none;
+.feature-card:nth-child(2) {
+  transition-delay: 0.45s;
+}
+
+.feature-card:nth-child(3) {
+  transition-delay: 0.60s;
+}
+
+.feature-card:nth-child(4) {
+  transition-delay: 0.75s;
+}
+
+.feature-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: #2563eb;
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.15);
+}
+
+/* ------------------------------------------
+   CTA BUTTONS
+------------------------------------------ */
+.about-cta {
+  margin-top: 25px;
+  display: flex;
+  gap: 15px;
+}
+
+.about-cta .btn-primary,
+.about-cta .btn-secondary {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease,
+    transform 0.5s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.about-cta .btn-primary {
+  transition-delay: 1.0s;
+}
+
+.about-cta .btn-secondary {
+  transition-delay: 1.1s;
+}
+
+.about-text.visible .about-cta .btn-primary,
+.about-text.visible .about-cta .btn-secondary {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-cta .btn-primary:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 28px rgba(228, 28, 6, 0.45);
+}
+
+.about-cta .btn-secondary:hover {
+  transform: translateY(-3px) !important;
+}
+
+/* ------------------------------------------
+   TRUST TEXT
+------------------------------------------ */
+.trust-text {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #888;
+
+  opacity: 0;
+  transition: opacity 0.6s ease 1.3s;
+}
+
+.about-text.visible .trust-text {
+  opacity: 1;
+}
+
+/* ------------------------------------------
+   RESPONSIVE
+------------------------------------------ */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 50px 20px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  /* Mobile: slide dari bawah, bukan dari samping */
+  .about-image {
+    max-width: 100%;
+    transform: translateY(-30px);
+  }
+
+  .about-image.visible {
+    transform: translateY(0);
+  }
+
+  .about-image img {
+    height: 250px;
+  }
+
+  .about-text {
+    text-align: center;
+    transform: translateY(30px);
+  }
+
+  .about-text.visible {
+    transform: translateY(0);
+  }
+
+  .about-text h2 {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .about-text p {
+    font-size: 14px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .about-cta {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .experience-badge,
+  .customer-badge {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  /* Sembunyikan pulse ring di mobile agar tidak terpotong */
+  .about-image::after {
+    display: none;
+  }
 }
 
 
+/* ==========================================================================
+   14. TESTIMONIAL SECTION
+   ========================================================================== */
 
-/* ===============================
-   VISION & MISSION SECTION
-================================= */
+/* ==========================================================================
+   TESTIMONIAL SECTION — CSS + ANIMATIONS
+   ========================================================================== */
+
+.testimonial-section {
+  padding: 100px 20px;
+  color: white;
+  text-align: center;
+  background: linear-gradient(270deg, #1e3a8a, #2563eb, #1e40af);
+  background-size: 200% 200%;
+  animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ------------------------------------------
+   BADGE — bounce masuk dari atas
+------------------------------------------ */
+.badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 18px;
+  border-radius: 30px;
+  margin-bottom: 15px;
+  font-size: 14px;
+
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.badge.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ------------------------------------------
+   TITLE — fade + naik
+------------------------------------------ */
+.section-title {
+  font-size: 36px;
+  margin-bottom: 10px;
+
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s;
+}
+
+.section-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title span {
+  color: #facc15;
+}
+
+/* ------------------------------------------
+   SUBTITLE — fade + naik, agak terlambat
+------------------------------------------ */
+.section-subtitle {
+  opacity: 0;
+  transform: translateY(20px);
+  margin-bottom: 50px;
+  transition: opacity 0.7s ease 0.28s, transform 0.7s ease 0.28s;
+}
+
+.section-subtitle.visible {
+  opacity: 0.8;
+  transform: translateY(0);
+}
+
+/* ------------------------------------------
+   SLIDER WRAPPER
+------------------------------------------ */
+.testimonial-slider {
+  position: relative;
+  overflow: hidden;
+  max-width: 900px;
+  margin: auto;
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+}
+
+.testimonial-slider.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slider-track {
+  display: flex;
+  gap: 25px;
+  transition: transform 0.5s ease;
+}
+
+/* ------------------------------------------
+   TESTIMONIAL CARDS
+------------------------------------------ */
+.testimonial-card {
+  min-width: 280px;
+  max-width: 280px;
+  flex-shrink: 0;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  /* Animasi masuk tiap card */
+  opacity: 0;
+  transform: translateY(30px) scale(0.96);
+  transition: opacity 0.5s ease,
+    transform 0.5s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Staggered delay per card */
+.testimonial-card:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.testimonial-card:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.testimonial-card:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.testimonial-card:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+.testimonial-card:nth-child(5) {
+  transition-delay: 0.5s;
+}
+
+.testimonial-card:nth-child(6) {
+  transition-delay: 0.6s;
+}
+
+.testimonial-card:nth-child(7) {
+  transition-delay: 0.7s;
+}
+
+.testimonial-card:nth-child(8) {
+  transition-delay: 0.8s;
+}
+
+.testimonial-card:nth-child(9) {
+  transition-delay: 0.9s;
+}
+
+.testimonial-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.testimonial-card.active {
+  background: white;
+  color: #333;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.testimonial-card.active:hover {
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.28);
+}
+
+.testimonial-card h4 {
+  margin-bottom: 5px;
+}
+
+/* ------------------------------------------
+   STARS — shimmer effect
+------------------------------------------ */
+.stars {
+  color: gold;
+  margin-bottom: 10px;
+  display: inline-block;
+  animation: shimmerStars 3s ease-in-out infinite;
+}
+
+@keyframes shimmerStars {
+
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+
+  50% {
+    filter: brightness(1.4);
+  }
+}
+
+/* ------------------------------------------
+   TAG
+------------------------------------------ */
+.tag {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px 10px;
+  border-radius: 20px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.testimonial-card:hover .tag {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
+}
+
+/* ------------------------------------------
+   ARROWS
+------------------------------------------ */
+.arrow {
+  position: absolute;
+  top: 100px;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.testimonial-slider:hover .arrow {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}
+
+.arrow:hover {
+  background: white;
+  color: #2563eb;
+  transform: translateY(-50%) scale(1.15);
+}
+
+/* ------------------------------------------
+   DOTS
+------------------------------------------ */
+.dots {
+  margin-top: 30px;
+
+  opacity: 0;
+  transition: opacity 0.6s ease 0.9s;
+}
+
+.dots.visible {
+  opacity: 1;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: white;
+  opacity: 0.4;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease, width 0.3s ease;
+}
+
+.dot.active {
+  opacity: 1;
+  transform: scale(1.2);
+  width: 24px;
+  /* melebar saat aktif */
+  border-radius: 5px;
+}
+
+/* ------------------------------------------
+   STATS — muncul satu per satu dari bawah
+------------------------------------------ */
+.testimonial-stats {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 20px;
+}
+
+.stat {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.stat:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.stat:nth-child(2) {
+  transition-delay: 0.25s;
+}
+
+.stat:nth-child(3) {
+  transition-delay: 0.4s;
+}
+
+.stat:nth-child(4) {
+  transition-delay: 0.55s;
+}
+
+.stat.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stat h3 {
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+
+.stat:hover h3 {
+  transform: scale(1.1);
+  color: #facc15;
+}
+
+.stat p {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* ------------------------------------------
+   RESPONSIVE
+------------------------------------------ */
+@media (max-width: 768px) {
+  .testimonial-section {
+    padding: 70px 15px;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+
+  .section-subtitle {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .testimonial-slider {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .testimonial-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .slider-track {
+    width: max-content;
+    gap: 15px;
+  }
+
+  .testimonial-card {
+    min-width: 85%;
+    max-width: 85%;
+    padding: 20px;
+  }
+
+  .testimonial-card h4 {
+    font-size: 16px;
+  }
+
+  .testimonial-card p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .arrow {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .arrow.left {
+    left: 5px;
+  }
+
+  .arrow.right {
+    right: 5px;
+  }
+
+  .testimonial-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .stat h3 {
+    font-size: 18px;
+  }
+
+  .stat p {
+    font-size: 12px;
+  }
+
+  .dots {
+    margin-top: 20px;
+  }
+}
+
+/* ==========================================================================
+   15. VISION & MISSION SECTION
+   ========================================================================== */
+
 .vision,
 .mission {
   background: #fff;
   padding: 40px 30px;
   border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
   color: var(--text-dark);
   transition: transform 0.3s ease;
+}
+
+.vision:hover,
+.mission:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
 .vision h3,
@@ -1173,7 +2087,6 @@ section h2 {
   margin-bottom: 15px;
   font-size: 1.1rem;
   line-height: 1.5;
-  color: var(--text-dark);
 }
 
 .mission li::before {
@@ -1187,16 +2100,11 @@ section h2 {
   line-height: 1;
 }
 
-/* Hover effect */
-.vision:hover,
-.mission:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-}
 
-/* ===============================
-   FOOTER
-================================= */
+/* ==========================================================================
+   16. FOOTER
+   ========================================================================== */
+
 .footer {
   background: #111;
   color: #bbb;
@@ -1221,7 +2129,6 @@ section h2 {
 
 .footer-column p,
 .footer-column address,
-.footer-column ul,
 .footer-column a {
   color: #bbb;
   line-height: 1.6;
@@ -1255,8 +2162,8 @@ section h2 {
   margin-right: 15px;
   font-size: 1.2rem;
   color: #bbb;
-  transition: color var(--transition);
   text-decoration: none;
+  transition: color var(--transition);
 }
 
 .footer-social a:hover {
@@ -1271,9 +2178,12 @@ section h2 {
   color: #666;
 }
 
-/* ===============================
-   ANIMATIONS FOR FADE-IN ELEMENTS
-================================= */
+
+/* ==========================================================================
+   17. UTILITIES
+   ========================================================================== */
+
+/* Fade-in observer utility */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -1285,31 +2195,53 @@ section h2 {
   transform: translateY(0);
 }
 
-/* ===============================
-   RESPONSIVE DESIGN
-================================= */
+/* Shared buttons */
+.btn-primary {
+  display: inline-block;
+  padding: 12px 20px;
+  background: var(--primary);
+  color: var(--light-bg);
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 20px;
+  box-shadow: 0 8px 25px rgba(228, 28, 6, 0.4);
+  animation: fadeInDelay 1s ease-out 0.3s both;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--dark-bg);
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 12px 20px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 20px;
+  box-shadow: 0 8px 25px rgba(228, 28, 6, 0.4);
+  animation: fadeInDelay 1s ease-out 0.3s both;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--dark-bg);
+}
+
+
+/* ==========================================================================
+   18. RESPONSIVE OVERRIDES (cross-section)
+   ========================================================================== */
+
 @media (max-width: 992px) {
+
   .about-grid,
   .vision-mission {
     grid-template-columns: 1fr;
-  }
-
-   .nav-links {
-    display:none;
-    flex-direction:column;
-    position:absolute;
-    top:60px;
-    right:0;
-    background:var(--dark-bg);
-    width:200px;
-    padding:10px;
-  }
-  .nav-links.mobile-active {
-    display:flex;
-  }
-
-  .mobile-toggle {
-    display: blo;
   }
 }
 
