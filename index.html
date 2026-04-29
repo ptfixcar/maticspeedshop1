@@ -1,253 +1,344 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MaticSpeedShop - Transmission Service</title>
-  <link rel="icon" type="image/png" href="Logofavmatic.png">
+  <link rel="icon" type="image/png" href="logomaticrevvv.png">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
- <!-- Navbar -->
-<header class="navbar">
-  <div class="container nav-container">
-    <!-- Logo -->
-    <div class="nav-logo">
-      <a href="index.html">
-        <img src="Logomatic.png" alt="Matic Speedshop Logo" class="logo-img">
-      </a>
-    </div>
 
-    <!-- Navigation Links -->
-     <div class="mobile-toggle">&#9776;</div>
-    <nav class="nav-links" role="navigation">
-      <a href="index.html" class="nav-link active">Home</a>
-      <a href="service.html" class="nav-link">Services</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="contact.html" class="nav-link">Contact</a>
-    </nav>
-  </div>
-</header>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <!-- Logo -->
+      <div class="nav-logo">
+        <a href="index.html">
+          <img src="logomaticrev.png" alt="Matic Speedshop Logo" class="logo-img">
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="mobile-toggle">&#9776;</div>
+      <nav class="nav-links" role="navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="service.html" class="nav-link">Services</a>
+        <a href="about.html" class="nav-link">Abouts</a>
+        <a href="contact.html" class="nav-link">Contacts</a>
+      </nav>
+    </div>
+  </header>
 
   <main>
-  <!-- Hero -->
-<section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-   <a href="#benefit" class="btn-primary">Lihat Keunggulan Kami</a>
-  </div>
-</section>
- <!-- Mengapa Memilih Kami -->
-<section id="benefit" class="benefit">
-  <div class="container">
-    <h2>Mengapa Pilih Kami?</h2>
-    <div class="benefit-grid">
-      <div class="benefit-box">🔧 Mekanik Spesialis Transmisi Matic</div>
-      <div class="benefit-box">📊 Diagnosa Tepat & Transparan</div>
-      <div class="benefit-box">⚙️ Sparepart Berkualitas</div>
-      <div class="benefit-box">🚘 Hasil Jangka Panjang</div>
-    </div>
-  </div>
-</section>
+    <!-- Hero -->
+    <section class="hero">
 
-  <!-- Layanan -->
-  <section class="services">
-    <div class="container">
-      <h2>Layanan Kami</h2>
-      <p>Berbagai layanan perawatan & perbaikan transmisi matic tersedia untuk Anda.</p>
+      <!-- VIDEO LANDSCAPE (DESKTOP) -->
+      <video class="hero-video video-landscape" autoplay muted loop playsinline>
+        <source src="videolandscapehero.MOV" type="video/mp4">
+      </video>
+
+      <!-- VIDEO PORTRAIT (MOBILE) -->
+      <video class="hero-video video-portrait" autoplay muted loop playsinline>
+        <source src="videopotraithero.MOV" type="video/mp4">
+      </video>
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h2 class="hero-title">Ahli Perbaikan & Overhaul Transmisi Matic</h2>
+        <p class="hero-subtitle">
+          Solusi profesional untuk transmisi matic Anda — akurat, modern & terpercaya.
+        </p>
+        <a href="#benefit" class="btn-primary">Lihat Keunggulan Kami</a>
+      </div>
+
+    </section>
+
+
+    <!-- Mengapa Memilih Kami -->
+    <section id="benefit" class="benefit">
+      <div class="container">
+        <h2>Mengapa Pilih Kami?</h2>
+        <div class="benefit-grid">
+
+          <div class="benefit-box">
+            🔧 Mekanik Spesialis Transmisi Matic
+            <div class="more-text">
+              Teknisi kami terlatih khusus menangani berbagai jenis transmisi automatic dengan metode yang tepat.
+            </div>
+            <span class="toggle-icon">+</span>
+          </div>
+
+          <div class="benefit-box">
+            📊 Diagnosa Tepat & Transparan
+            <div class="more-text">
+              Proses pemeriksaan menggunakan alat modern dengan hasil yang jelas dan bisa dipahami konsumen.
+            </div>
+            <span class="toggle-icon">+</span>
+          </div>
+
+          <div class="benefit-box">
+            ⚙️ Sparepart Berkualitas
+            <div class="more-text">
+              Kami hanya menggunakan sparepart original & terbaik untuk menjaga keawetan transmisi Anda.
+            </div>
+            <span class="toggle-icon">+</span>
+          </div>
+
+          <div class="benefit-box">
+            🚘 Hasil Jangka Panjang
+            <div class="more-text">
+              Perbaikan fokus pada ketahanan jangka panjang, bukan hanya solusi sementara.
+            </div>
+            <span class="toggle-icon">+</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Layanan -->
+    <section class="services">
+      <div class="video-wrapper">
+        <video class="video-landscape" controls poster="thumbnail.jpg">
+          <source src="videolandscaperev.mp4.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="container">
+        <h2>Layanan Kami</h2>
+        <p>Berbagai layanan perawatan & perbaikan transmisi matic tersedia untuk Anda.</p>
+      </div>
       <a href="service.html" class="btn-secondary">Lihat Semua Layanan</a>
-    </div>
-  </section>
+    </section>
 
-  <!-- Testimoni Google -->
-<!-- Testimoni Custom Slider -->
-<section class="google-reviews-custom fade-in">
-  <div class="container">
-    <h2>Apa Kata Pelanggan?</h2>
+    <!-- Testimoni Google -->
+    <!-- Testimoni Custom Slider -->
+    <section class="testimonial-section">
+      <div class="container">
 
-    <div class="reviews-wrapper">
-      <!-- Tombol Kiri -->
-      <button class="review-btn left" onclick="scrollReview(-1)">&#10094;</button>
+        <span class="badge">💬 TESTIMONI</span>
 
-      <!-- Scroll Container -->
-      <div class="review-scroll" id="reviewScroll">
+        <h2 class="section-title">
+          Apa Kata <span>Pelanggan?</span>
+        </h2>
 
-        <!-- Review 1 -->
-        <div class="review-card">
-          <div class="review-author">
-            <img src="social_16389861.png" alt="User">
-            <div>
-              <span class="name">Muhammadjohan Rizaldi</span>
-              <span class="stars">⭐⭐⭐⭐⭐</span>
+        <p class="section-subtitle">
+          Kepuasan pelanggan adalah prioritas kami. Ini yang mereka katakan.
+        </p>
+
+        <!-- SLIDER -->
+        <div class="testimonial-slider">
+
+          <!-- PANAH KIRI -->
+          <button class="arrow left" onclick="slideTestimonial(-1)">&#10094;</button>
+
+          <!-- TRACK (WAJIB ADA) -->
+          <div class="slider-track" id="sliderTrack">
+            <!-- LEFT -->
+            <div class="testimonial-card">
+              <h4>Muhammadjohan Rizaldi</h4>
+              <div class="stars">★★★★★</div>
+              <p>
+                "Alhamdulillah makasih pak satria. Bengkel matic paling recommended."
+              </p>
+              <span class="tag"> Pelanggan </span>
+            </div>
+
+            <div class="testimonial-card">
+              <h4>Thurday Alone</h4>
+              <div class="stars">★★★★★</div>
+              <p>
+                "Top Markeketop, recomended service mobil matic di wilayah Purwokerto."
+              </p>
+              <span class="tag"> Pelanggan </span>
+            </div>
+
+            <!-- CENTER (ACTIVE) -->
+            <div class="testimonial-card active">
+              <h4>Juni Rakhmat Pamungkas</h4>
+              <div class="stars">★★★★★</div>
+              <p>
+                "Transmisi diperbaiki cepat, hasilnya halus. Mekanik profesional & ramah."
+              </p>
+              <span class="tag"> Pelanggan </span>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="testimonial-card">
+              <h4>Joko Handoko</h4>
+              <div class="stars">★★★★★</div>
+              <p>
+                "Keluhan jedug langsung hilang. Sangat puas dengan hasilnya!"
+              </p>
+              <span class="tag"> Pelanggan </span>
+            </div>
+            <div class="testimonial-card">
+              <h4>Lala llaa</h4>
+              <div class="stars">★★★★★</div>
+              <p>"Gearbox matic sekarang mulus, pengerjaan cepat & harga terjangkau."</p>
+              <span class="tag"> Pelanggan </span>
+            </div>
+
+            <!-- CARD 5 -->
+            <div class="testimonial-card">
+              <h4>Arto Sujiarto</h4>
+              <div class="stars">★★★★★</div>
+              <p>"Gearbox Yaris saya aman dan adem selama perjalanan jauh tetap aman. Bengkel sangat recommended."</p>
+              <span class="tag"> Pelanggan </span>
+            </div>
+
+            <div class="testimonial-card">
+              <h4>Afif Irfansyah</h4>
+              <div class="stars">★★★★★</div>
+              <p>"Service transmisi matic hyundai sanatafe, ditempat lain ga bisa. Disini bisa emang mantap dan jos
+                sangat recomended sekali."</p>
+              <span class="tag"> Pelanggan </span>
+            </div>
+
+            <!-- CARD 6 -->
+            <div class="testimonial-card">
+              <h4>Cumil</h4>
+              <div class="stars">★★★★★</div>
+              <p>"Biaya service terjangkau, mekanik ramah, dan pengerjaan cepat."</p>
+              <span class="tag"> Pelanggan </span>
+            </div>
+
+            <!-- CARD 7 -->
+            <div class="testimonial-card">
+              <h4>Okan Tobing</h4>
+              <div class="stars">★★★★★</div>
+              <p>"Service Odyssey matic di sini sangat memuaskan. Highly recommended."</p>
+              <span class="tag"> Pelanggan </span>
             </div>
           </div>
-          <p>"Alhamdulillah makasih pak satria Owner fix car, ini memang bengkel mobil matic yang paling recommended."</p>
-        </div>
 
-        <!-- Review 2 -->
-        <div class="review-card">
-          <div class="review-author">
-            <img src="social_16389861.png" alt="User">
-            <div>
-              <span class="name">Juni Rakhmat Pamungkas</span>
-              <span class="stars">⭐⭐⭐⭐⭐</span>
+          <!-- DOTS -->
+          <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+
+          <!-- STATS -->
+          <div class="testimonial-stats">
+            <div class="stat">
+              <h3>1000+</h3>
+              <p>Pelanggan Puas</p>
+            </div>
+            <div class="stat">
+              <h3>4.9 / 5</h3>
+              <p>Rating Google</p>
+            </div>
+            <div class="stat">
+              <h3>5+ Tahun</h3>
+              <p>Pengalaman</p>
+            </div>
+            <div class="stat">
+              <h3>Bergaransi</h3>
+              <p>Setiap Pengerjaan</p>
             </div>
           </div>
-          <p>"Transmisi matic Innova saya diperbaiki dengan cepat, hasilnya oke banget. Mekaniknya profesional & ramah."</p>
+          <!-- PANAH KANAN -->
+          <button class="arrow right" onclick="slideTestimonial(1)">&#10095;</button>
+
         </div>
+    </section>
 
-        <!-- Review 3 -->
-        <div class="review-card">
-          <div class="review-author">
-            <img src="social_16389861.png" alt="User">
-            <div>
-              <span class="name">Joko Handoko</span>
-              <span class="stars">⭐⭐⭐⭐⭐</span>
-            </div>
-          </div>
-          <p>"Service transmisi matic Pajero kesayangan disini, keluhan jedug dan lelet langsung hilang. Mekaniknya handal banget."</p>
-        </div>
+    <!-- Form WA -->
+    <section class="contact-short">
+      <div class="container">
+        <h2>Hubungi Kami!</h2>
+        <form id="waForm">
+          <input type="text" id="name" placeholder="Nama Anda" required>
+          <textarea id="message" placeholder="Pesan Anda" required></textarea>
+          <button type="submit" class="btn-primary">Kirim </button>
+        </form>
+        <p>Atau gunakan menu <a href="contact.html">Kontak</a> untuk pilihan lain.</p>
+      </div>
+    </section>
 
-        <!-- Review 4 -->
-        <div class="review-card">
-          <div class="review-author">
-            <img src="social_16389861.png" alt="User">
-            <div>
-              <span class="name">Lala llaa</span>
-              <span class="stars">⭐⭐⭐⭐⭐</span>
-            </div>
-          </div>
-          <p>"Tidak menyesal servis di sini. Gearbox matic saya sekarang mulus, pengerjaan tepat waktu, harga juga terjangkau."</p>
-        </div>
-
-        <!-- Review 5 -->
-        <div class="review-card">
-          <div class="review-author">
-            <img src="social_16389861.png" alt="User">
-            <div>
-              <span class="name">Arto Sujiarto</span>
-              <span class="stars">⭐⭐⭐⭐⭐</span>
-            </div>
-          </div>
-          <p>"Thanks a lot Pak Satria, gearbox Yaris saya aman dan adem selama perjalanan Purwokerto-Jakarta. Bengkel sangat recommended 👍."</p>
-        </div>
-
-        <!-- Review 6 -->
-        <div class="review-card">
-          <div class="review-author">
-            <img src="social_16389861.png" alt="User">
-            <div>
-              <span class="name">Cumil</span>
-              <span class="stars">⭐⭐⭐⭐⭐</span>
-            </div>
-          </div>
-          <p>"Sangat puas dengan pelayanan di bengkel ini. Biaya service gearbox matic murah, mekanik ramah, dan pengerjaan cepat."</p>
-        </div>
-
-        <!-- Review 7 -->
-        <div class="review-card">
-          <div class="review-author">
-            <img src="social_16389861.png" alt="User">
-            <div>
-              <span class="name">Okan Tobing</span>
-              <span class="stars">⭐⭐⭐⭐⭐</span>
-            </div>
-          </div>
-          <p>"Service Odyssey matic disini, mekanik dan layanannya hebat. Sangat recommended sekali."</p>
-        </div>
-
-      </div> <!-- end review-scroll -->
-
-      <!-- Tombol Kanan -->
-      <button class="review-btn right" onclick="scrollReview(1)">&#10095;</button>
-    </div>
-
-    <!-- Navigasi Dots -->
-    <div class="review-dots" id="reviewDots"></div>
-  </div>
-</section>
-
-  <!-- Form WA -->
-  <section class="contact-short">
-    <div class="container">
-      <h2>Hubungi Kami!</h2>
-      <form id="waForm">
-        <input type="text" id="name" placeholder="Nama Anda" required>
-        <textarea id="message" placeholder="Pesan Anda" required></textarea>
-        <button type="submit" class="btn-primary">Kirim </button>
-      </form>
-      <p>Atau gunakan menu <a href="contact.html">Kontak</a> untuk pilihan lain.</p>
-    </div>
-  </section>
-
-  <!-- Lokasi -->
-  <section id="map-section">
-    <h2>Lokasi Bengkel Kami</h2>
-    <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63355.8633346696!2d109.2131185!3d-7.4192775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655f6d8661dc5f%3A0xc093b296983795a7!2sBengkel%20Mobil%20Spesialis%20Matic%20(Matic%20Speed%20Shop)!5e0!3m2!1sen!2sid!4v1692450400000!5m2!1sen!2sid"
-        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"  allowfullscreen="" 
-        loading="lazy" referrerpolicy="no-referrer-when-downgrade">>
-      </iframe>
-      <a href="https://maps.google.com/?q=Matic+Speed+Shop" target="_blank" class="btn-secondary">📍 Lihat di Google Maps</a>
-    </div>
-  </section>
+    <!-- Lokasi -->
+    <section id="map-section">
+      <h2>Lokasi Bengkel Kami</h2>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.1622832411817!2d109.2511787741324!3d-7.447290973386493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655fe1e04fa3df%3A0xc00a181f5b70a831!2sFixcar%20Automotive%20Indonesia%20(%2024%2F7%20)!5e0!3m2!1sen!2sid!4v1777269357010!5m2!1sen!2sid"
+          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade>
+        width=" 600" height="450" style="border:0;" allowfullscreen="" loading="lazy" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">>
+        </iframe>
+        <a href="https://maps.app.goo.gl/so4TTraaFeqopASz5" target="_blank" class="btn-secondary">📍 Lihat di Google
+          Maps</a>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
-<footer class="footer">
-  <div class="container footer-content">
-    <!-- Brand Info -->
-    <div class="footer-column">
-      <h3 class="footer-logo">MaticSpeedShop</h3>
-      <p class="footer-desc">
-        Spesialis transmisi matic terpercaya di Purwokerto. Memberikan layanan profesional, transparan, dan bergaransi.
-      </p>
-      <address>
-        📍 Gg. Catur No.6, Mangunjaya, Purwokerto Lor, Kec. Purwokerto Tim., Banyumas, Jawa Tengah 53114<br>
-        📞 <a href="tel:+6285640621068">(+62)856-4062-1068</a>
-      </address>
-    </div>
+  <footer class="footer">
+    <div class="container footer-content">
+      <!-- Brand Info -->
+      <div class="footer-column">
+        <h3 class="footer-logo">MaticSpeedShop</h3>
+        <p class="footer-desc">
+          Spesialis transmisi matic terpercaya di Purwokerto. Memberikan layanan profesional, transparan, dan
+          bergaransi.
+        </p>
+        <address>
+          📍 Gg. Catur No.6, Mangunjaya, Purwokerto Lor, Kec. Purwokerto Tim., Banyumas, Jawa Tengah 53114<br>
+          📞 <a href="tel:+6285640621068">(+62)856-4062-1068</a>
+        </address>
+      </div>
 
-    <!-- Jam Buka -->
-    <div class="footer-column">
-      <h4>Jam Buka</h4>
-      <ul class="footer-list">
-        <li>Senin - Minggu: 08.00 - 18.00</li>
-        <li>Jumat: Tutup</li>
-      </ul>
-    </div>
+      <!-- Jam Buka -->
+      <div class="footer-column">
+        <h4>Jam Buka</h4>
+        <ul class="footer-list">
+          <li>Senin - Minggu: 08.00 - 18.00</li>
+          <li>Jumat: Tutup</li>
+        </ul>
+      </div>
 
-    <!-- Quick Links -->
-    <div class="footer-column">
-      <h4>Quick Links</h4>
-      <ul class="footer-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="service.html">Services</a></li>
-        <li><a href="sbout.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
+      <!-- Quick Links -->
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul class="footer-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="sbout.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
 
-    <!-- Sosial Media -->
-    <div class="footer-column">
-      <h4>Ikuti Kami</h4>
-      <div class="footer-social">
-        <a href="https://wa.me/6285640621068" target="_blank">WhatsApp</a>
-        <a href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWsmBGMMJMdcGdXnvFxpjCVcnwrrTPskBfkfNTszQmqlJhPGrXlbBcLCfBVZQWhPLTxVtjKKQ">Email</a>
-        <a href="https://www.instagram.com/maticspeed.shop" target="_blank">Instagram</a>
+      <!-- Sosial Media -->
+      <div class="footer-column">
+        <h4>Ikuti Kami</h4>
+        <div class="footer-social">
+          <a href="https://wa.me/6285640621068" target="_blank">WhatsApp</a>
+          <a
+            href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWsmBGMMJMdcGdXnvFxpjCVcnwrrTPskBfkfNTszQmqlJhPGrXlbBcLCfBVZQWhPLTxVtjKKQ">Email</a>
+          <a href="https://www.instagram.com/maticspeed.shop" target="_blank">Instagram</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Bottom -->
-  <div class="footer-bottom">
-    <p>© 2025 <b>MaticSpeedShop</b>. All rights reserved.</p>
-  </div>
-</footer>
-
+    <!-- Bottom -->
+    <div class="footer-bottom">
+      <p>© 2025 <b>MaticSpeedShop</b>. All rights reserved.</p>
+    </div>
+  </footer>
+  <button id="scrollTopBtn" title="Kembali ke Atas">⮝</button>
 
   <script src="script.js"></script>
 </body>
-</html>
 
+</html>
